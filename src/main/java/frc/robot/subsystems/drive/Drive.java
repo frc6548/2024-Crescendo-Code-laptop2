@@ -91,8 +91,8 @@ public class Drive extends SubsystemBase {
         () -> kinematics.toChassisSpeeds(getModuleStates()), // robotRelativeSpeedSupplier
         this::runVelocity, // robotRelativeOutput
         new HolonomicPathFollowerConfig( // config
-            new PIDConstants(0, 0),
-            new PIDConstants(.1, 0),
+            new PIDConstants(0.1, 0),
+            new PIDConstants(0.1, 0),
             MAX_LINEAR_SPEED,
             DRIVE_BASE_RADIUS,
             new ReplanningConfig()),
@@ -270,16 +270,6 @@ public class Drive extends SubsystemBase {
   /** Resets the current odometry pose. */
   public void setPose(Pose2d pose) {
     poseEstimator.resetPosition(rawGyroRotation, getModulePositions(), pose);
-  }
-
-  /**
-   * Adds a vision measurement to the pose estimator.
-   *
-   * @param visionPose The pose of the robot as measured by the vision camera.
-   * @param timestamp The timestamp of the vision measurement in seconds.
-   */
-  public void addVisionMeasurement(Pose2d visionPose, double timestamp) {
-    poseEstimator.addVisionMeasurement(visionPose, timestamp);
   }
 
   /** Returns the maximum linear speed in meters per sec. */
