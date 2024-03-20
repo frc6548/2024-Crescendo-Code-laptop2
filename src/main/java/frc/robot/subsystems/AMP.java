@@ -20,7 +20,7 @@ public class AMP extends SubsystemBase {
     ampMotor.set(speed);
   }
 
-  public double getIndexerEncoder() {
+  public double getAmpEncoder() {
     return ampEncoder.getPosition();
   }
 

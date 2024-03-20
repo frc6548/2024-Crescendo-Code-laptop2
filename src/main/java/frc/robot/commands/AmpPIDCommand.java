@@ -10,7 +10,7 @@ public class AmpPIDCommand extends Command {
 
   public AmpPIDCommand(AMP ampSubsystem, double setpoint) {
     this.ampSubsystem = ampSubsystem;
-    this.pidController = new PIDController(0.06, 0.1, 0.0);
+    this.pidController = new PIDController(0.06, 0.0, 0.0);
     pidController.setSetpoint(setpoint);
     addRequirements(ampSubsystem);
   }
@@ -24,7 +24,7 @@ public class AmpPIDCommand extends Command {
 
   @Override
   public void execute() {
-    double speed = pidController.calculate(ampSubsystem.getIndexerEncoder());
+    double speed = pidController.calculate(ampSubsystem.getAmpEncoder());
     ampSubsystem.setMotor(speed);
   }
 

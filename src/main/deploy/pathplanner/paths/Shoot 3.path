@@ -3,12 +3,12 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.85,
+        "x": 2.84,
         "y": 6.75
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.7104832527052167,
+        "x": 2.7004832527052165,
         "y": 6.3666808871718255
       },
       "isLocked": false,
@@ -43,7 +43,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": null,
+  "folder": "Mid 3 Piece",
   "previewStartingState": {
     "rotation": -112.03504261907791,
     "velocity": 0

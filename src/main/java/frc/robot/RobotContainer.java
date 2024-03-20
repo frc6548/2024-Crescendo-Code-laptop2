@@ -125,15 +125,11 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    controller
-        .y()
-        .toggleOnTrue(new IntakeCommand(intakeSubsystem, indexerSubsystem, ledsSubsystem, .5));
+    controller.y().toggleOnTrue(new IntakeCommand(intakeSubsystem, indexerSubsystem, ledsSubsystem, .5));
     controller.b().toggleOnTrue(new IndexerPIDCommand(indexerSubsystem, intakeSubsystem, 7.5));
-    controller.leftBumper().toggleOnTrue(new AmpCommand(shooterSubsystem, indexerSubsystem, .75));
-    controller
-        .rightBumper()
-        .toggleOnTrue(new SpeakerCommand(shooterSubsystem, indexerSubsystem, 1));
-    controller.povLeft().toggleOnTrue(new AmpPIDCommand(ampSubsystem, -3.8));
+    controller.leftBumper().toggleOnTrue(new AmpCommand(shooterSubsystem, indexerSubsystem, .325));
+    controller.rightBumper().toggleOnTrue(new SpeakerCommand(shooterSubsystem, indexerSubsystem, 1));
+    controller.povLeft().toggleOnTrue(new AmpPIDCommand(ampSubsystem, -3.25));
     controller.povRight().toggleOnTrue(new AmpPIDCommand(ampSubsystem, -.2));
 
     controller.povUp().whileTrue(new ClimberCommand(climberSubsystem, 1));

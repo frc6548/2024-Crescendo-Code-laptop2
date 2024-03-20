@@ -8,20 +8,36 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.425177889872606,
-        "y": 5.78897387745087
+        "x": 1.8674896582831504,
+        "y": 6.126702046914418
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.84,
-        "y": 6.75
+        "x": 1.9159220855314858,
+        "y": 6.833815484740114
       },
       "prevControl": {
-        "x": 2.7495097488882916,
-        "y": 6.501380078389803
+        "x": 1.5840276049257533,
+        "y": 6.670273276905406
+      },
+      "nextControl": {
+        "x": 2.250105833544999,
+        "y": 6.9984857373844545
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.5746030961088464,
+        "y": 6.988799251934787
+      },
+      "prevControl": {
+        "x": 2.5235178096314885,
+        "y": 6.967004659673036
       },
       "nextControl": null,
       "isLocked": false,
@@ -38,9 +54,9 @@
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
-    "velocity": 0.0,
-    "rotation": -110.0,
-    "rotateFast": true
+    "velocity": 0,
+    "rotation": 0,
+    "rotateFast": false
   },
   "reversed": false,
   "folder": "Mid 3 Piece",
