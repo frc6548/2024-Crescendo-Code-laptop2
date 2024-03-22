@@ -102,10 +102,10 @@ public class RobotContainer {
 
     NamedCommands.registerCommand(
         "intake",
-        new IntakeCommand(intakeSubsystem, indexerSubsystem, ledsSubsystem, .5).withTimeout(1.5));
+        new IntakeCommand(intakeSubsystem, indexerSubsystem, ledsSubsystem, 0.5).withTimeout(1.5));
     NamedCommands.registerCommand(
         "intakeslow",
-        new IntakeCommand(intakeSubsystem, indexerSubsystem, ledsSubsystem, 1.5).withTimeout(1.5));
+        new IntakeCommand(intakeSubsystem, indexerSubsystem, ledsSubsystem, 0.5).withTimeout(2.5));
     NamedCommands.registerCommand(
         "index", new IndexerPIDCommand(indexerSubsystem, intakeSubsystem, 7.5).withTimeout(.25));
     NamedCommands.registerCommand(
@@ -125,11 +125,15 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    controller.y().toggleOnTrue(new IntakeCommand(intakeSubsystem, indexerSubsystem, ledsSubsystem, .5));
+    controller
+        .y()
+        .toggleOnTrue(new IntakeCommand(intakeSubsystem, indexerSubsystem, ledsSubsystem, 0.5));
     controller.b().toggleOnTrue(new IndexerPIDCommand(indexerSubsystem, intakeSubsystem, 7.5));
-    controller.leftBumper().toggleOnTrue(new AmpCommand(shooterSubsystem, indexerSubsystem, .325));
-    controller.rightBumper().toggleOnTrue(new SpeakerCommand(shooterSubsystem, indexerSubsystem, 1));
-    controller.povLeft().toggleOnTrue(new AmpPIDCommand(ampSubsystem, -3.25));
+    controller.leftBumper().toggleOnTrue(new AmpCommand(shooterSubsystem, indexerSubsystem, .4));
+    controller
+        .rightBumper()
+        .toggleOnTrue(new SpeakerCommand(shooterSubsystem, indexerSubsystem, 1));
+    controller.povLeft().toggleOnTrue(new AmpPIDCommand(ampSubsystem, -3.0).withTimeout(.5));
     controller.povRight().toggleOnTrue(new AmpPIDCommand(ampSubsystem, -.2));
 
     controller.povUp().whileTrue(new ClimberCommand(climberSubsystem, 1));

@@ -87,7 +87,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Intake"
+                  "name": "intakeslow"
                 }
               }
             ]
@@ -100,16 +100,9 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "path",
           "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "Shoot 3"
-                }
-              }
-            ]
+            "pathName": "Shoot 3"
           }
         },
         {

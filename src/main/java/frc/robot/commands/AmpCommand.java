@@ -26,7 +26,7 @@ public class AmpCommand extends Command {
   @Override
   public void execute() {
     shooterSubsystem.setMotor(speed);
-    if (shooterSubsystem.leftShooterEncoder.getVelocity() > 1300) {
+    if (shooterSubsystem.leftShooterEncoder.getVelocity() > 1600) {
       indexerSubsystem.setMotor(-1);
     }
   }

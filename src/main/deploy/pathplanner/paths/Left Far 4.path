@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.32,
-        "y": 5.5
+        "x": 8.6,
+        "y": 0.6
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.38,
-        "y": 5.5
+        "x": 6.192505411559495,
+        "y": 0.9831782731412058
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.0,
-        "y": 5.5
+        "x": 2.3275977171423365,
+        "y": 3.5985293445513147
       },
       "prevControl": {
-        "x": 2.94,
-        "y": 5.5
+        "x": 3.8241597191158956,
+        "y": 0.5133837288323537
       },
       "nextControl": null,
       "isLocked": false,
@@ -43,7 +43,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Mid 3 Piece",
+  "folder": "Troll Auto",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0
