@@ -95,7 +95,7 @@ public class Drive extends SubsystemBase {
             new ReplanningConfig()),
         () ->
             DriverStation.getAlliance().isPresent() // shouldFlipPath
-                && DriverStation.getAlliance().get() == Alliance.Red,
+                && DriverStation.getAlliance().get() == Alliance.Blue, // Red
         this);
 
     // Configure SysId

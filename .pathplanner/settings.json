@@ -3,8 +3,9 @@
   "robotLength": 0.9,
   "holonomicMode": true,
   "pathFolders": [
-    "Mid 3 Piece",
-    "Troll Auto"
+    "Left 3 Note Auto",
+    "Troll Auto",
+    "Left Far"
   ],
   "autoFolders": [],
   "defaultMaxVel": 3.0,

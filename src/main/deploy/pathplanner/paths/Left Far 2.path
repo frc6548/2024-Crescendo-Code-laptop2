@@ -8,20 +8,20 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.6811544360551838,
-        "y": 2.1455565271012533
+        "x": 2.627878766082015,
+        "y": 0.40683238888601564
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 7.6,
-        "y": 0.8
+        "x": 7.45,
+        "y": 1.85
       },
       "prevControl": {
-        "x": 6.6,
-        "y": 0.8
+        "x": 6.323412689069652,
+        "y": 1.8201057466096742
       },
       "nextControl": null,
       "isLocked": false,
@@ -38,12 +38,12 @@
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
-    "velocity": 0,
-    "rotation": -36.360000000000014,
+    "velocity": 0.0,
+    "rotation": -36.60000000000002,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Troll Auto",
+  "folder": "Left Far",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

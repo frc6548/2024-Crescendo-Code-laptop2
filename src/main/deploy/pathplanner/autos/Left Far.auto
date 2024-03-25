@@ -14,7 +14,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Left Far"
+            "pathName": "Left Far 1"
           }
         },
         {
@@ -70,6 +70,12 @@
           "type": "named",
           "data": {
             "name": "shoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Left Far 5"
           }
         }
       ]
