@@ -57,31 +57,33 @@ public class ModuleIOSparkMax implements ModuleIO {
   private final boolean isTurnMotorInverted = true;
   private final Rotation2d absoluteEncoderOffset;
 
+  // positive = counter clockwise
+  // negative = clockwise
   public ModuleIOSparkMax(int index) {
     switch (index) {
       case 0: // FL
         driveSparkMax = new CANSparkMax(8, MotorType.kBrushless);
         turnSparkMax = new CANSparkMax(7, MotorType.kBrushless);
         turnAbsoluteEncoder = new CANcoder(12);
-        absoluteEncoderOffset = new Rotation2d(1.3);
+        absoluteEncoderOffset = new Rotation2d(2.9);
         break;
       case 1: // FR
         driveSparkMax = new CANSparkMax(2, MotorType.kBrushless);
         turnSparkMax = new CANSparkMax(1, MotorType.kBrushless);
         turnAbsoluteEncoder = new CANcoder(9);
-        absoluteEncoderOffset = new Rotation2d(-2.65);
+        absoluteEncoderOffset = new Rotation2d(-1.15);
         break;
       case 2: // BL
         driveSparkMax = new CANSparkMax(6, MotorType.kBrushless);
         turnSparkMax = new CANSparkMax(5, MotorType.kBrushless);
         turnAbsoluteEncoder = new CANcoder(11);
-        absoluteEncoderOffset = new Rotation2d(-0.39);
+        absoluteEncoderOffset = new Rotation2d(-1.5);
         break;
       case 3: // BR
         driveSparkMax = new CANSparkMax(4, MotorType.kBrushless);
         turnSparkMax = new CANSparkMax(3, MotorType.kBrushless);
         turnAbsoluteEncoder = new CANcoder(10);
-        absoluteEncoderOffset = new Rotation2d(0.2);
+        absoluteEncoderOffset = new Rotation2d(.275);
         break;
       default:
         throw new RuntimeException("Invalid module index");
@@ -100,7 +102,7 @@ public class ModuleIOSparkMax implements ModuleIO {
 
     turnSparkMax.setInverted(isTurnMotorInverted);
     driveSparkMax.setSmartCurrentLimit(40);
-    turnSparkMax.setSmartCurrentLimit(30);
+    turnSparkMax.setSmartCurrentLimit(20);
     driveSparkMax.enableVoltageCompensation(12.0);
     turnSparkMax.enableVoltageCompensation(12.0);
 

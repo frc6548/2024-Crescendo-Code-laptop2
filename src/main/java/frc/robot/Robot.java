@@ -102,9 +102,7 @@ public class Robot extends LoggedRobot {
 
   /** This function is called once when the robot is disabled. */
   @Override
-  public void disabledInit() {
-    robotContainer.ledsSubsystem.whiteLED();
-  }
+  public void disabledInit() {}
 
   /** This function is called periodically when disabled. */
   @Override
@@ -119,7 +117,6 @@ public class Robot extends LoggedRobot {
     if (autonomousCommand != null) {
       autonomousCommand.schedule();
     }
-    robotContainer.ledsSubsystem.turnOffLED();
   }
 
   /** This function is called periodically during autonomous. */
@@ -136,7 +133,6 @@ public class Robot extends LoggedRobot {
     if (autonomousCommand != null) {
       autonomousCommand.cancel();
     }
-    robotContainer.ledsSubsystem.turnOffLED();
   }
 
   /** This function is called periodically during operator control. */
