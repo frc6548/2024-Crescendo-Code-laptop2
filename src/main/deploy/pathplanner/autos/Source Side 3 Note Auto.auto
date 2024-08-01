@@ -16,15 +16,15 @@
           "data": {
             "commands": [
               {
-                "type": "path",
-                "data": {
-                  "pathName": "3 Note Auto (3)"
-                }
-              },
-              {
                 "type": "named",
                 "data": {
                   "name": "shoot"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "3 Note Auto (1)"
                 }
               }
             ]
@@ -72,6 +72,56 @@
                 }
               }
             ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "4 Note Auto (7)"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "intakeslow2"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "index"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "4 Note Auto (8)"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "shoot"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Mid Book"
           }
         }
       ]

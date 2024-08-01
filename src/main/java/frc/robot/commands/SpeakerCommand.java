@@ -26,7 +26,7 @@ public class SpeakerCommand extends Command {
   public void execute() {
     shooterSubsystem.setCoastMode();
     shooterSubsystem.setMotor(speed);
-    if (shooterSubsystem.leftShooterEncoder.getVelocity() > 3900) {
+    if (shooterSubsystem.leftShooterEncoder.getVelocity() > 3700) {
       indexerSubsystem.setMotor(-1);
     }
   }

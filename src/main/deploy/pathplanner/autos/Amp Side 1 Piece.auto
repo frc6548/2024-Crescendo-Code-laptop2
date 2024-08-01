@@ -3,9 +3,9 @@
   "startingPose": {
     "position": {
       "x": 0.5,
-      "y": 2.5
+      "y": 7.1
     },
-    "rotation": 0.0
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
@@ -14,13 +14,25 @@
         {
           "type": "path",
           "data": {
-            "pathName": "To Middle"
+            "pathName": "Amp Side 1 Piece (1)"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shoot"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 7.5
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Squiggle"
+            "pathName": "Amp Side 1 Piece (2)"
           }
         }
       ]

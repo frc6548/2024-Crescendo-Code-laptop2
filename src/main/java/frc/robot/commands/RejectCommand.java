@@ -5,13 +5,13 @@ import frc.robot.subsystems.Indexer;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.LEDs;
 
-public class IntakeCommand extends Command {
+public class RejectCommand extends Command {
   private final Intake intakeSubsystem;
   private final Indexer indexerSubsystem;
   private final LEDs ledsSubsystem;
   private final double speed;
 
-  public IntakeCommand(
+  public RejectCommand(
       Intake intakeSubsystem, Indexer indexerSubsystem, LEDs ledsSubsystem, double speed) {
     this.intakeSubsystem = intakeSubsystem;
     this.indexerSubsystem = indexerSubsystem;
@@ -24,23 +24,23 @@ public class IntakeCommand extends Command {
 
   @Override
   public void initialize() {
-    System.out.println("IntakeCommand started!");
+    System.out.println("RejectCommand started!");
     indexerSubsystem.getIndexerEncoder();
     indexerSubsystem.getIndexerEncoder();
   }
 
   @Override
   public void execute() {
-    intakeSubsystem.setMotor(speed);
-    indexerSubsystem.setMotor(-speed);
-    ledsSubsystem.greenLED();
+    intakeSubsystem.setMotor(-speed);
+    indexerSubsystem.setMotor(speed);
+    ledsSubsystem.redLED();
   }
 
   @Override
   public void end(boolean interrupted) {
     intakeSubsystem.setMotor(0);
     indexerSubsystem.setMotor(0);
-    System.out.println("IntakeCommand ended!");
+    System.out.println("RejectCommand ended!");
     ledsSubsystem.turnOffLED();
   }
 

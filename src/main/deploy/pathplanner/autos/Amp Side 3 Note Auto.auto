@@ -16,15 +16,15 @@
           "data": {
             "commands": [
               {
-                "type": "path",
-                "data": {
-                  "pathName": "shoot-2"
-                }
-              },
-              {
                 "type": "named",
                 "data": {
                   "name": "shoot"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "3 Note Auto (1)"
                 }
               }
             ]
@@ -37,7 +37,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "Intake 1"
+                  "pathName": "3 Note Auto (2)"
                 }
               },
               {
@@ -62,7 +62,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "shoot-2"
+                  "pathName": "3 Note Auto (3)"
                 }
               },
               {
@@ -81,13 +81,13 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "Intake 2"
+                  "pathName": "3 Note Auto (4)"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "intakeslow"
+                  "name": "intakeslow2"
                 }
               }
             ]
@@ -100,21 +100,28 @@
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "Shoot 3"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "3 Note Auto (5)"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "shoot"
+                }
+              }
+            ]
           }
         },
         {
-          "type": "named",
-          "data": {
-            "name": "shoot"
-          }
-        },
-        {
           "type": "path",
           "data": {
-            "pathName": "Intake 4"
+            "pathName": "Amp Side Book"
           }
         }
       ]

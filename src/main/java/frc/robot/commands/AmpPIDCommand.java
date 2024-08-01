@@ -10,7 +10,7 @@ public class AmpPIDCommand extends Command {
 
   public AmpPIDCommand(AMP ampSubsystem, double setpoint) {
     this.ampSubsystem = ampSubsystem;
-    this.pidController = new PIDController(0.06, 0.0, 0.0);
+    this.pidController = new PIDController(0.08, 0.0, 0.0); // .06
     pidController.setSetpoint(setpoint);
     addRequirements(ampSubsystem);
   }

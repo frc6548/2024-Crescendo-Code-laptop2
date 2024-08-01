@@ -24,7 +24,7 @@ import org.littletonrobotics.junction.Logger;
 
 public class Module {
   private static final double WHEEL_RADIUS = Units.inchesToMeters(2.0);
-  static final double ODOMETRY_FREQUENCY = 250.0; // 250.0
+  static final double ODOMETRY_FREQUENCY = 100.0;
 
   private final ModuleIO io;
   private final ModuleIOInputsAutoLogged inputs = new ModuleIOInputsAutoLogged();
@@ -47,9 +47,9 @@ public class Module {
     switch (Constants.currentMode) {
       case REAL:
       case REPLAY:
-        driveFeedforward = new SimpleMotorFeedforward(.1, 0.13); // 1 .13
-        driveFeedback = new PIDController(0.05, 0.0, 0.0); // .05
-        turnFeedback = new PIDController(7.0, 0.0, 0.0);
+        driveFeedforward = new SimpleMotorFeedforward(1.0, 0.13); // 1.0 0.13
+        driveFeedback = new PIDController(0.05, 0.0, 0.0); // 0.05
+        turnFeedback = new PIDController(7.0, 0.0, 0.0); // 7.0
         break;
       case SIM:
         driveFeedforward = new SimpleMotorFeedforward(0.0, 0.13); // 0 .13

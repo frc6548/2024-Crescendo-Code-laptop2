@@ -20,7 +20,6 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
 import frc.robot.commands.AmpCommand;
 import frc.robot.commands.AmpPIDCommand;
 import frc.robot.commands.ClimberCommand;
@@ -57,6 +56,7 @@ public class RobotContainer {
   private final Shooter shooterSubsystem = new Shooter();
   public final LEDs ledsSubsystem = new LEDs();
   public final AMP ampSubsystem = new AMP();
+  public final GyroIOPigeon2 GyroImplementation = new GyroIOPigeon2(false);
 
   // Controller
   private final CommandXboxController controller = new CommandXboxController(0);
@@ -106,6 +106,9 @@ public class RobotContainer {
         new IntakeCommand(intakeSubsystem, indexerSubsystem, ledsSubsystem, 0.5).withTimeout(1.5));
     NamedCommands.registerCommand(
         "intakeslow",
+        new IntakeCommand(intakeSubsystem, indexerSubsystem, ledsSubsystem, 0.5).withTimeout(4.7));
+    NamedCommands.registerCommand(
+        "intakeslow2",
         new IntakeCommand(intakeSubsystem, indexerSubsystem, ledsSubsystem, 0.5).withTimeout(2.5));
     NamedCommands.registerCommand(
         "index", new IndexerPIDCommand(indexerSubsystem, intakeSubsystem, 7.5).withTimeout(.25));
@@ -113,17 +116,6 @@ public class RobotContainer {
         "shoot", new SpeakerCommand(shooterSubsystem, indexerSubsystem, 1).withTimeout(2));
 
     autoChooser = new LoggedDashboardChooser<>("Auto Choices", AutoBuilder.buildAutoChooser());
-
-    autoChooser.addOption(
-        "Drive SysId (Quasistatic Forward)",
-        drive.sysIdQuasistatic(SysIdRoutine.Direction.kForward));
-    autoChooser.addOption(
-        "Drive SysId (Quasistatic Reverse)",
-        drive.sysIdQuasistatic(SysIdRoutine.Direction.kReverse));
-    autoChooser.addOption(
-        "Drive SysId (Dynamic Forward)", drive.sysIdDynamic(SysIdRoutine.Direction.kForward));
-    autoChooser.addOption(
-        "Drive SysId (Dynamic Reverse)", drive.sysIdDynamic(SysIdRoutine.Direction.kReverse));
 
     // Configure the button bindings
     configureButtonBindings();
@@ -139,18 +131,19 @@ public class RobotContainer {
   private void configureButtonBindings() {
     controller
         .y()
-        .toggleOnTrue(new IntakeCommand(intakeSubsystem, indexerSubsystem, ledsSubsystem, 0.5));
+        .toggleOnTrue(new IntakeCommand(intakeSubsystem, indexerSubsystem, ledsSubsystem, 0.35));
     controller.b().toggleOnTrue(new IndexerPIDCommand(indexerSubsystem, intakeSubsystem, 7.5));
-    controller.leftBumper().toggleOnTrue(new AmpCommand(shooterSubsystem, indexerSubsystem, .4));
+    controller
+        .leftBumper()
+        .toggleOnTrue(new AmpCommand(shooterSubsystem, indexerSubsystem, .45)); // .587 brush
     controller
         .rightBumper()
-        .toggleOnTrue(new SpeakerCommand(shooterSubsystem, indexerSubsystem, 1));
-    controller.povLeft().toggleOnTrue(new AmpPIDCommand(ampSubsystem, -3.0).withTimeout(.5));
+        .toggleOnTrue(new SpeakerCommand(shooterSubsystem, indexerSubsystem, 0.9));
+    controller.povLeft().toggleOnTrue(new AmpPIDCommand(ampSubsystem, -3.35)); // -3.2 brush
     controller.povRight().toggleOnTrue(new AmpPIDCommand(ampSubsystem, -.2));
-
     controller.povUp().whileTrue(new ClimberCommand(climberSubsystem, 1));
     controller.povDown().whileTrue(new ClimberCommand(climberSubsystem, -1));
-    controller.leftTrigger().onTrue(new InstantCommand(() -> ampSubsystem.resetEncoder()));
+    controller.leftTrigger().onTrue(new InstantCommand(() -> GyroImplementation.resetGyro()));
 
     drive.setDefaultCommand(
         DriveCommands.joystickDrive(

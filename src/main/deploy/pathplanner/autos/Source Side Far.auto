@@ -12,21 +12,22 @@
     "data": {
       "commands": [
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "Left Far 1"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "shoot"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Left Far 2"
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "shoot"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "LEFT FAR 1"
+                }
+              }
+            ]
           }
         },
         {
@@ -36,13 +37,13 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "Left Far 3"
+                  "pathName": "LEFT FAR 2"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "intake"
+                  "name": "intakeslow"
                 }
               }
             ]
@@ -57,25 +58,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Left Far 4"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "index"
+            "pathName": "LEFT FAR 3"
           }
         },
         {
           "type": "named",
           "data": {
             "name": "shoot"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Left Far 5"
           }
         }
       ]
