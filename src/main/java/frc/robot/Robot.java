@@ -54,6 +54,10 @@ public class Robot extends LoggedRobot {
       default:
         Logger.recordMetadata("GitDirty", "Unknown");
         break;
+
+        // for (int port = 5800; port <= 5809; port++) {
+        // PortForwarder.add(port, "limelight.local", port);
+        //   }
     }
 
     // Set up data receivers & replay source

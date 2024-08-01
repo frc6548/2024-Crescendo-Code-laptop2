@@ -26,6 +26,7 @@ import frc.robot.subsystems.drive.GyroIOPigeon2;
 import frc.robot.subsystems.drive.ModuleIO;
 import frc.robot.subsystems.drive.ModuleIOSim;
 import frc.robot.subsystems.drive.ModuleIOSparkMax;
+import frc.robot.subsystems.vision.LimelightUtils;
 import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
 
 /**
@@ -37,6 +38,7 @@ import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
 public class RobotContainer {
   // Subsystems
   private final Drive drive;
+  public final LimelightUtils limelight = new LimelightUtils();
 
   public final GyroIOPigeon2 GyroImplementation = new GyroIOPigeon2(false);
 
@@ -96,14 +98,17 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    controller.leftTrigger().onTrue(new InstantCommand(() -> GyroImplementation.resetGyro()));
+    controller.povDown().onTrue(new InstantCommand(() -> GyroImplementation.resetGyro()));
 
     drive.setDefaultCommand(
         DriveCommands.joystickDrive(
             drive,
+            limelight,
             () -> -controller.getLeftY(),
             () -> -controller.getLeftX(),
-            () -> -controller.getRightX()));
+            () -> -controller.getRightX(),
+            controller.rightTrigger(),
+            controller.leftTrigger()));
   }
 
   /**

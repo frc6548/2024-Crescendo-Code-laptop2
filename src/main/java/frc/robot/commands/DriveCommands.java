@@ -24,6 +24,8 @@ import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import frc.robot.subsystems.drive.Drive;
+import frc.robot.subsystems.vision.LimelightUtils;
+import java.util.function.BooleanSupplier;
 import java.util.function.DoubleSupplier;
 
 public class DriveCommands {
@@ -36,9 +38,12 @@ public class DriveCommands {
    */
   public static Command joystickDrive(
       Drive drive,
+      LimelightUtils limelight,
       DoubleSupplier xSupplier,
       DoubleSupplier ySupplier,
-      DoubleSupplier omegaSupplier) {
+      DoubleSupplier omegaSupplier,
+      BooleanSupplier llaim,
+      BooleanSupplier llfollow) {
     return Commands.run(
         () -> {
           // Apply deadband
@@ -52,6 +57,33 @@ public class DriveCommands {
           // Square values
           linearMagnitude = linearMagnitude * linearMagnitude;
           omega = Math.copySign(omega * omega, omega);
+
+          final var llomega = LimelightUtils.targetingAngularVelocity();
+          if (llaim.getAsBoolean()) {
+            linearMagnitude /= 2d;
+            omega = llomega;
+            limelight.ledBlink();
+          } else {
+            omega = Math.copySign(omega * omega, omega);
+            limelight.ledOff();
+          }
+
+          // final var lltranslate = LimelightUtils.targetingForwardSpeed();
+          // if (llfollow.getAsBoolean()) {
+          //   linearMagnitude = lltranslate;
+          //   omega = llomega;
+          //   limelight.ledSolid();
+          // } else {
+          //   linearMagnitude = linearMagnitude * linearMagnitude;
+          //   omega = Math.copySign(omega * omega, omega);
+          //   limelight.ledOff();
+          // }
+
+          // final var validtarget = LimelightUtils.validTarget();
+          // if (validtarget == 0) { TODO invaid target causes robot to not aim
+          //   omega = Math.copySign(omega * omega, omega);
+          //   limelight.lightOff();
+          // }
 
           // Calcaulate new linear velocity
           Translation2d linearVelocity =
