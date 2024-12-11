@@ -30,19 +30,16 @@ import java.util.function.DoubleSupplier;
 
 public class DriveCommands {
   private static final double DEADBAND = 0.1;
-
-  private DriveCommands() {}
+  public static final LimelightUtils limelight = new LimelightUtils();
 
   /**
    * Field relative drive command using two joysticks (controlling linear and angular velocities).
    */
   public static Command joystickDrive(
       Drive drive,
-      LimelightUtils limelight,
       DoubleSupplier xSupplier,
       DoubleSupplier ySupplier,
       DoubleSupplier omegaSupplier,
-      BooleanSupplier llaim,
       BooleanSupplier llfollow) {
     return Commands.run(
         () -> {
@@ -58,17 +55,25 @@ public class DriveCommands {
           linearMagnitude = linearMagnitude * linearMagnitude;
           omega = Math.copySign(omega * omega, omega);
 
-          final var llomega = LimelightUtils.targetingAngularVelocity();
-          if (llaim.getAsBoolean()) {
+          // Calcaulate new linear velocity
+          Translation2d linearVelocity =
+              new Pose2d(new Translation2d(), linearDirection)
+                  .transformBy(new Transform2d(linearMagnitude, 0.0, new Rotation2d()))
+                  .getTranslation();
+
+          if (LimelightUtils.isAprilTagAimControl()) {
             linearMagnitude /= 2d;
-            omega = llomega;
+            omega = LimelightUtils.targetingAngularVelocity();
             limelight.ledBlink();
           } else {
+            linearMagnitude = linearMagnitude * linearMagnitude;
             omega = Math.copySign(omega * omega, omega);
             limelight.ledOff();
           }
 
-          // final var lltranslate = LimelightUtils.targetingForwardSpeed();
+          // if (LimelightUtils.validTarget()) {
+
+          // final var lltranslate = LimelightUtils.targetingForwardSpeed(); TODO
           // if (llfollow.getAsBoolean()) {
           //   linearMagnitude = lltranslate;
           //   omega = llomega;
@@ -78,18 +83,6 @@ public class DriveCommands {
           //   omega = Math.copySign(omega * omega, omega);
           //   limelight.ledOff();
           // }
-
-          // final var validtarget = LimelightUtils.validTarget();
-          // if (validtarget == 0) { TODO invaid target causes robot to not aim
-          //   omega = Math.copySign(omega * omega, omega);
-          //   limelight.lightOff();
-          // }
-
-          // Calcaulate new linear velocity
-          Translation2d linearVelocity =
-              new Pose2d(new Translation2d(), linearDirection)
-                  .transformBy(new Transform2d(linearMagnitude, 0.0, new Rotation2d()))
-                  .getTranslation();
 
           // Convert to field relative speeds & send command
           boolean isFlipped =

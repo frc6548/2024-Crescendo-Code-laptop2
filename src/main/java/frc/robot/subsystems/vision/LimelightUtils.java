@@ -12,7 +12,8 @@ public class LimelightUtils extends SubsystemBase {
   static NetworkTableEntry tx = table.getEntry("tx");
   static NetworkTableEntry ty = table.getEntry("ty");
   static NetworkTableEntry tv = table.getEntry("tv");
-  ;
+
+  private static boolean isAprilTagAim = false;
 
   @Override
   public void periodic() {
@@ -22,6 +23,7 @@ public class LimelightUtils extends SubsystemBase {
     SmartDashboard.putNumber("LimelightX", x);
     SmartDashboard.putNumber("LimelightY", y);
     SmartDashboard.putNumber("Valid Target", v);
+    SmartDashboard.putNumber("targetingForwardVelocity", targetingForwardVelocity());
   }
 
   public static double targetingAngularVelocity() {
@@ -33,7 +35,7 @@ public class LimelightUtils extends SubsystemBase {
     return targetingAngularVelocity;
   }
 
-  public static double targetingForwardSpeed() {
+  public static double targetingForwardVelocity() { // TODO
     double y = ty.getDouble(0);
     double kP = .001;
     double targetingForwardSpeed = y * kP;
@@ -42,9 +44,17 @@ public class LimelightUtils extends SubsystemBase {
     return targetingForwardSpeed;
   }
 
-  public static double validTarget() {
-    long v = tv.getInteger(0);
-    return v;
+  public static boolean invalidTarget() {
+    double v = tv.getInteger(0);
+    return v <= 0;
+  }
+
+  public void toggleAprilTagAimControl() {
+    isAprilTagAim = !isAprilTagAim;
+  }
+
+  public static boolean isAprilTagAimControl() {
+    return isAprilTagAim;
   }
 
   public void ledOff() {
@@ -58,6 +68,4 @@ public class LimelightUtils extends SubsystemBase {
   public void ledSolid() {
     NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(3);
   }
-
-  public static boolean validtarget;
 }
